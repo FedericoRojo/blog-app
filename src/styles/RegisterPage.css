@@ -1,0 +1,83 @@
+/* General Register Page Container */
+.register-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-bottom: 40px;
+}
+
+/* Error Message Styling */
+.error-message {
+    color: red;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* Register Form Container */
+.register-form-container {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+/* Register Page Title */
+.register-form-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Input Field Wrapper */
+.form-field {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Label Styling */
+.form-field label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Input Field Styling */
+.form-field input[type="text"],
+.form-field input[type="email"],
+.form-field input[type="password"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+.form-field input[type="text"]:focus,
+.form-field input[type="email"]:focus,
+.form-field input[type="password"]:focus {
+    border-color: #879bb1;
+    outline: none;
+}
+
+/* Submit Button */
+.form-submit-button {
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.form-submit-button:hover {
+    background-color: #879bb1;
+    color: white;
+}
