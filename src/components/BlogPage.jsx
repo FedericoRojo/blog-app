@@ -90,7 +90,8 @@ useEffect(() => {
     
     async function fetchPersonalInfo() {
         try{
-            const response = await fetch('http://localhost:3000/users/personal-info');
+            
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/users/personal-info`);
             if(!response.ok){
                 setError(response.status);
             }else{
@@ -104,7 +105,8 @@ useEffect(() => {
 
     async function fetchTotalPostsCount() {
         try{
-        const response = await fetch(`http://localhost:3000/posts/getCount`);
+            
+        const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/getCount`);
         
         if (!response.ok) {
             throw new Error(response.status);
@@ -123,7 +125,8 @@ useEffect(() => {
 
     async function fetchTotalFilteredPostsCount(tag){
         try{
-            const response = await fetch(`http://localhost:3000/posts/${tag.id}/getCount`);
+            
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/${tag.id}/getCount`);
             
             if (!response.ok) {
                 throw new Error(response.status);
@@ -142,7 +145,8 @@ useEffect(() => {
 
     const fetchBlogPosts = async () => {
         try{
-            const response = await fetch(`http://localhost:3000/posts?limit=${limit}&offset=${actualPage}`);
+            
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts?limit=${limit}&offset=${actualPage}`);
             
             if (!response.ok) {
                 const errorData = await response.json(); 
@@ -166,7 +170,8 @@ useEffect(() => {
 
     const fetchTags = async () => {
         try{
-            const response = await fetch('http://localhost:3000/posts/tags');
+            
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/tags`);
             if(!response.ok){
                 throw new Error('Netwoork response was not ok '+response.status);
             }
@@ -180,7 +185,8 @@ useEffect(() => {
     
     async function fetchPostsByTag(tag) {
         try{
-            const response = await fetch(`http://localhost:3000/posts/search/${tag.id}?limit=${limit}&offset=${actualPage}`);
+            
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/search/${tag.id}?limit=${limit}&offset=${actualPage}`);
             if(!response.ok){
                 throw new Error('Netwoork response was not ok '+response.status);
             }

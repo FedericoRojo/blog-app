@@ -45,7 +45,8 @@ const BlogPostPage = ({ error, setError, loggedIn }) => {
         event.preventDefault();
 
         try{
-            const response = await fetch(`http://localhost:3000/posts/${id}/comments`, {
+            
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/${id}/comments`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -71,7 +72,8 @@ const BlogPostPage = ({ error, setError, loggedIn }) => {
 
     const deleteLike = async () => {
         try{
-            const response = await fetch(`http://localhost:3000/posts/${id}/likes`, {
+            
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/${id}/likes`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -95,7 +97,8 @@ const BlogPostPage = ({ error, setError, loggedIn }) => {
 
     const handleLike = async () => {
         try{
-            const response = await fetch(`http://localhost:3000/posts/${id}/likes`, {
+            
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/${id}/likes`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -119,7 +122,8 @@ const BlogPostPage = ({ error, setError, loggedIn }) => {
 
     const fetchAlreadyLked = async () => {
         try{
-            const response = await fetch(`http://localhost:3000/posts/${id}/liked`, {
+            
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/${id}/liked`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -143,7 +147,8 @@ const BlogPostPage = ({ error, setError, loggedIn }) => {
 
     const handleSave = async (commentId) => {
         try{
-            const response = await fetch(`http://localhost:3000/posts/${id}/comments/${commentId}`, {
+            
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/${id}/comments/${commentId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -178,7 +183,8 @@ const BlogPostPage = ({ error, setError, loggedIn }) => {
 
     const handleDelete = async (commentId) => {
         try{
-            const response = await fetch(`http://localhost:3000/posts/${id}/comments/${commentId}`, {
+            
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/${id}/comments/${commentId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -202,7 +208,8 @@ const BlogPostPage = ({ error, setError, loggedIn }) => {
 
     async function fetchPost() {
         try{
-            const response = await fetch(`http://localhost:3000/posts/${id}`);
+            
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/${id}`);
             if(!response.ok){
                 throw new Error('Netwoork response was not ok '+response.status);
             }
@@ -215,7 +222,8 @@ const BlogPostPage = ({ error, setError, loggedIn }) => {
 
     async function fetchComments() {
         try{
-            const response = await fetch(`http://localhost:3000/posts/${id}/comments`, {
+            
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/${id}/comments`, {
                 method: 'GET',
                 headers: {
                     'Authorization': token,
@@ -236,7 +244,8 @@ const BlogPostPage = ({ error, setError, loggedIn }) => {
 
     async function fetchLikes() {
         try{
-            const response = await fetch(`http://localhost:3000/posts/${id}/likes`, {
+            
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/${id}/likes`, {
                 method: 'GET',
                 headers: {
                     'Authorization': token,

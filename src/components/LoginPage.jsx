@@ -10,7 +10,8 @@ function LoginPage({error, setError, setLoggedIn}  ) {
     const handleSubmit = async(event) => {
         event.preventDefault();
         try{
-            const response = await fetch('http://localhost:3000/users/login', {
+            
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/users/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
