@@ -69,6 +69,7 @@ function BlogPage({ error, setError, loggedIn }){
 
 useEffect(() => {
     if (resetFetch) {
+        console.log('aca');
         setActualPage(0);
         setTotalCountPosts(0);
         setFetchCount(false);
@@ -139,8 +140,7 @@ useEffect(() => {
                 const json = await response.json();
                 setTotalCountPosts(json.totalCount);
                 if( actualPage + limit > json.totalCount ){
-                    
-                    setLimitPostsReached(true);
+                    setLimitPostsReached(true);   
                 }
             }
             }catch(error){
@@ -211,6 +211,7 @@ useEffect(() => {
         setTotalCountPosts(0);
         setFetchCount(false);
         setFetchDone(false);
+        setLimitPostsReached(false);
 
         setFilteredByTag(elem);
         setResetSearch(true);
