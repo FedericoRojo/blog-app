@@ -272,7 +272,7 @@ const BlogPostPage = ({ error, setError, loggedIn }) => {
                         <p>{post.description}</p>
                     </div>
                     <div className='b-p-comments'>
-                        {token && (
+                        {loggedIn != null && (
                             <div className='create-comment-container'>
                                 <button onClick={handleShowForm}>
                                     {showForm ? "Cancel" : "Create comment"}
@@ -321,7 +321,7 @@ const BlogPostPage = ({ error, setError, loggedIn }) => {
                                 </div>
                             ))
                         ) : ( 
-                                loggedIn 
+                                loggedIn != null
                                     ? ( <p>No comments</p> ) 
                                     : ( <p>Log in to see comments</p>)
                                 
