@@ -3,7 +3,7 @@ export default async function isAuthenticated() {
     const token = localStorage.getItem('token');
     if (token != null) {
         try {
-            const response = await fetch('http://localhost:3000/users/auth', {
+            const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/users/auth`, {
                 method: 'GET',
                 headers: { 
                     'Content-Type': 'application/json',
