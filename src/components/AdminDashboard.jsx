@@ -36,8 +36,6 @@ function AdminDashboard({error, setError, setLoggedIn, loggedIn}){
         if(loggedIn != null){
             fetchPosts();
             fetchPersonalInfo();
-        }else{
-            console.log(loggedIn);
         }
     },[]);
 
@@ -272,7 +270,7 @@ function AdminDashboard({error, setError, setLoggedIn, loggedIn}){
 
         try{
             
-            const response = await fetch( `${import.meta.env.VITE_APP_API_BASE_URL}/posts/tags/${id}`, {
+            const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/users/personal-info`, {
                 method: "POST",
                 headers: {
                     'Authorization': token
