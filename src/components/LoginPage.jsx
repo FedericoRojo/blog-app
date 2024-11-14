@@ -28,7 +28,6 @@ function LoginPage({error, setError, setLoggedIn}  ) {
             localStorage.setItem('token', data.token);
             
             setLoggedIn(data.result);
-
             navigate('/');
         }catch(error){
             setError(error.message);

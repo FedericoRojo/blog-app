@@ -80,7 +80,7 @@ function UserDashboard({error, setError}){
     }
 
     async function handleDelete(commentId, postId){
-        setIsDeleting(true);
+        setIsDeleting(commentId);
 
         const timeoutId = setTimeout( () => {
             deleteComment(commentId, postId);
@@ -139,7 +139,7 @@ function UserDashboard({error, setError}){
     }
 
     function handleLikeDelete(likeId, postId){
-        setIsLikeDeleting(true);
+        setIsLikeDeleting(likeId);
 
         const timeoutId = setTimeout( () => {
             deleteLike(likeId, postId);
@@ -212,7 +212,7 @@ function UserDashboard({error, setError}){
                                                             <button className="user-button" onClick={() => handleDelete(elem.commentid,  elem.post_id)}>Delete</button>
                                                         </div>
                                                     </div>
-                                                    {isDeleting && (
+                                                    {isDeleting == elem.commentid && (
                                                             <div className="undo-delete-message">
                                                                 <p>Comment will be deleted in 3 seconds.</p>
                                                                 <button className="user-button" onClick={handleUndoDelete}>Undo</button>
@@ -238,7 +238,7 @@ function UserDashboard({error, setError}){
                                 <div>
                                     <button className="user-button" onClick={() => handleLikeDelete(elem.id,  elem.post_id)}>Delete</button>    
                                 </div>
-                                {isLikeDeleting && (
+                                {isLikeDeleting == elem.id && (
                                             <div className="undo-delete-message">
                                                 <p>Like will be deleted in 3 seconds.</p>
                                                 <button onClick={handleUndoLikeDelete}>Undo</button>

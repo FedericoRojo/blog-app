@@ -36,7 +36,7 @@ function App() {
               <Route element={<MainLayout error={error} setError={setError} setLoggedIn={setLoggedIn} loggedIn={loggedIn}/>}>
                   <Route path="/register" element={<RegisterPage error={error} setError={setError} />} />
                   <Route path="/login" element={<LoginPage error={error} setError={setError} setLoggedIn={setLoggedIn}/>} />
-                  <Route path="/posts/:id" element={<BlogPostPage error={error} setError={setError} setLoggedIn={setLoggedIn} /> }/>
+                  <Route path="/posts/:id" element={<BlogPostPage error={error} setError={setError} loggedIn={loggedIn} /> }/>
                   <Route path="/dashboard" element={<UserDashboard error={error} setError={setError}/>}></Route>
                   <Route path="/admindashboard" element={<AdminDashboard error={error} setError={setError} setLoggedIn={setLoggedIn} loggedIn={loggedIn} />}></Route>
                   <Route path="/post/edit/:id" element={<PostEditor error={error} setError={setError}/>}></Route>

@@ -5,7 +5,7 @@ import { jwtDecode } from 'jwt-decode';
 
 const BlogPostPage = ({ error, setError, loggedIn }) => {
     const [post, setPost] = useState(null);
-    const [comments, setComments] = useState(null);
+    const [comments, setComments] = useState([]);
     const [editingCommentId, setEditingCommentId] = useState(null);
     const [likes, setLikes] = useState(null);
     
@@ -13,6 +13,8 @@ const BlogPostPage = ({ error, setError, loggedIn }) => {
     const [commentContent, setCommentContent] = useState('');
     const [userId, setUserId] = useState(null);
     const [alreadyLiked, setAlreadyLiked] = useState(false);
+    const [commentCreated, setCommentCreated] = useState(false);
+    const [loadingComments, setLoadingComments] = useState(true); 
 
     const {id} = useParams();
 
@@ -26,17 +28,26 @@ const BlogPostPage = ({ error, setError, loggedIn }) => {
     }, [token]);
 
     useEffect( () => {
-
-    }, []);
-
-    useEffect( () => {
         fetchPost();
-        if(token != null){
+        if(loggedIn != null){
             fetchComments();
             fetchLikes();
             fetchAlreadyLked();
         }
     }, []);
+
+    useEffect( () => {
+        if(loggedIn != null){
+            console.log(comments);
+        }
+    }, [comments]);
+
+    useEffect( () => {
+        if(commentCreated){
+            fetchComments();
+            setCommentCreated(false);
+        }
+    }, [commentCreated]);
 
 
     const handleShowForm = () => setShowForm(prev => !prev);
@@ -60,10 +71,9 @@ const BlogPostPage = ({ error, setError, loggedIn }) => {
             }
             
             const data = await response.json();
-            
             setCommentContent('');
             setShowForm(false);
-            fetchComments();
+            setCommentCreated(true);
 
         }catch(error){
             setError(error.message);
@@ -164,7 +174,7 @@ const BlogPostPage = ({ error, setError, loggedIn }) => {
             const data = await response.json();
             
             handleCancel();
-            fetchComments();
+            setCommentCreated(true);
 
         }catch(error){
             setError(error.message);
@@ -222,7 +232,7 @@ const BlogPostPage = ({ error, setError, loggedIn }) => {
 
     async function fetchComments() {
         try{
-            
+            setLoadingComments(true);
             const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/posts/${id}/comments`, {
                 method: 'GET',
                 headers: {
@@ -237,6 +247,8 @@ const BlogPostPage = ({ error, setError, loggedIn }) => {
             setComments(json.result);
         }catch(error){
             setError(error.message);
+        }finally {
+            setLoadingComments(false); 
         }
     }
 
@@ -291,8 +303,10 @@ const BlogPostPage = ({ error, setError, loggedIn }) => {
                             </div>
                         )}
 
-
-                        {( loggedIn && comments != null && comments.length != 0) ? (
+                        { loggedIn != null && loadingComments ? (
+                            <p>Loading comments...</p>
+                            ) : ( loggedIn != null && comments != null &&  comments.length != 0) ? (
+                            
                             comments.map( elem => (
                                 <div className='comments-container' key={elem.id}>
                                     { editingCommentId == elem.id ? (

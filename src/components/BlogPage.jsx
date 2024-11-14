@@ -25,6 +25,7 @@ function BlogPage({ error, setError, loggedIn }){
 
 
     useEffect(() => {
+       
         countTotalPosts();
         if (tags.length === 0) {
             fetchTags();
