@@ -106,7 +106,12 @@ useEffect(() => {
     async function fetchTotalPostsCount() {
         try{
             
-        const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/getCount`);
+        const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/getCount`, {
+            method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+        });
         
         if (!response.ok) {
             throw new Error(response.status);
