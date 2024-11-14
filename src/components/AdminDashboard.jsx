@@ -81,7 +81,7 @@ function AdminDashboard({error, setError, setLoggedIn, loggedIn}){
 
     async function fetchPersonalInfo() {
         try{
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/users/personal-info`);
+            const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/users/personal-info`);
             if(!response.ok){
                 setError(response.status);
             }else{
@@ -96,7 +96,7 @@ function AdminDashboard({error, setError, setLoggedIn, loggedIn}){
     async function fetchTags() {
         try{
             
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/tags`);
+            const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/posts/tags`);
             if(!response.ok){
                 setError(response.status);
             }else{
@@ -113,7 +113,7 @@ function AdminDashboard({error, setError, setLoggedIn, loggedIn}){
     async function fetchPosts() {
         try{
             
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/admin/posts?limit=${limit}&offset=${offset}`, {
+            const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/posts/admin/posts?limit=${limit}&offset=${offset}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -136,7 +136,7 @@ function AdminDashboard({error, setError, setLoggedIn, loggedIn}){
     async function handleDelete(id){
         console.log(id);
         try{
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/${id}`, {
+            const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/posts/${id}`, {
                 method: "DELETE",
                 headers: {
                     'Content-type': 'application/json',
@@ -159,7 +159,7 @@ function AdminDashboard({error, setError, setLoggedIn, loggedIn}){
         e.preventDefault();
         try{
             
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/tags`, {
+            const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/posts/tags`, {
                 method: "POST",
                 headers: {
                     'Content-type': 'application/json',
@@ -185,7 +185,7 @@ function AdminDashboard({error, setError, setLoggedIn, loggedIn}){
         const id = tagId;
         try{
             
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/tags/${id}`, {
+            const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/posts/tags/${id}`, {
                 method: "PUT",
                 headers: {
                     'Content-type': 'application/json',
@@ -237,7 +237,7 @@ function AdminDashboard({error, setError, setLoggedIn, loggedIn}){
     async function handleDeleteTag(id) {
         try{
             
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/tags/${id}`, {
+            const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/posts/tags/${id}`, {
                 method: "DELETE",
                 headers: {
                     'Content-type': 'application/json',
@@ -272,7 +272,7 @@ function AdminDashboard({error, setError, setLoggedIn, loggedIn}){
 
         try{
             
-            const response = await fetch( `${process.env.REACT_APP_API_BASE_URL}/posts/tags/${id}`, {
+            const response = await fetch( `${import.meta.env.VITE_APP_API_BASE_URL}/posts/tags/${id}`, {
                 method: "POST",
                 headers: {
                     'Authorization': token
@@ -303,7 +303,7 @@ function AdminDashboard({error, setError, setLoggedIn, loggedIn}){
 
         try{
             
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/users/personal-info`, {
+            const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/users/personal-info`, {
                 method: "PUT",
                 headers: {
                     'Authorization': token
