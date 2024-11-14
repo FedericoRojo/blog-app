@@ -11,7 +11,7 @@ function LoginPage({error, setError, setLoggedIn}  ) {
         event.preventDefault();
         try{
             
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/users/login`, {
+            const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/users/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -24,7 +24,7 @@ function UserDashboard({error, setError}){
     async function fetchComments(){
         try{
             
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/comments/user`, {
+            const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/posts/comments/user`, {
                 method: 'GET',
                 headers: {
                     'Authorization': token,
@@ -56,7 +56,7 @@ function UserDashboard({error, setError}){
     async function handleSave(cId, pId){
         try{
             
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/${pId}/comments/${cId}`, {
+            const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/posts/${pId}/comments/${cId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -98,7 +98,7 @@ function UserDashboard({error, setError}){
     async function deleteComment(commentId, postId) {
         try{
             
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/${postId}/comments/${commentId}`, {
+            const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/posts/${postId}/comments/${commentId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -121,7 +121,7 @@ function UserDashboard({error, setError}){
     async function fetchLikes() {
         try{
             
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/likes/user`, {
+            const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/posts/likes/user`, {
                 method: 'GET',
                 headers: {
                     'Authorization': token,
@@ -158,7 +158,7 @@ function UserDashboard({error, setError}){
     async function deleteLike(postId){
         try{
             
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/${postId}/likes`, {
+            const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/posts/${postId}/likes`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

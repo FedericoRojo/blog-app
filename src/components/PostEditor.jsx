@@ -36,7 +36,7 @@ function PostEditor({error, setError}){
     async function fetchPost(){
         try{
             
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/${id}`);
+            const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/posts/${id}`);
             if(!response.ok){
                 setError(response.status);
             }else{
@@ -58,7 +58,7 @@ function PostEditor({error, setError}){
     async function fetchTags() {
         try{
             
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/tags`);
+            const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/posts/tags`);
             if(!response.ok){
                 setError(response.status);
             }else{
@@ -84,7 +84,7 @@ function PostEditor({error, setError}){
 
         try{
             
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/${id}`,{
+            const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/posts/${id}`,{
                 method: 'PUT',
                 headers: {
                     'Authorization': token

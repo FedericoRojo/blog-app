@@ -52,7 +52,7 @@ function BlogLayout({error, setError, setLoggedIn, loggedIn}) {
   return (
     <>
       <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
-      <BlogPage />
+      <BlogPage error={error} setError={setError} loggedIn={loggedIn} />
     </>
   );
 }

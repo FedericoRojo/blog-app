@@ -17,7 +17,7 @@ function RegisterPage(  {error, setError}) {
 
         try{
             
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/users/register`, {
+            const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/users/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
